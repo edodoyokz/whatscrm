@@ -11,7 +11,8 @@ RUN apk add --no-cache git \
     python3 \
     make \
     g++ \
-    libc6-compat
+    libc6-compat \
+    curl
 
 # Copy package files
 COPY package*.json ./
@@ -43,4 +44,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:3000/health || exit 1
 
 # Start application
-CMD ["node", "server.js"]
+CMD ["node", "app.js"]
